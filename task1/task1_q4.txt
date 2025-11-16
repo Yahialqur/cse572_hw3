@@ -1,0 +1,34 @@
+Number of clusters K: 10
+Number of samples: 10000
+Max iterations set to: 500
+
+========================================
+Testing K means with stop_mode='centroid_stable' and max_iterations=500
+========================================
+ Euclidean - Time: 2.2897 sec, Iterations: 33, Stop Reason: Centroids stable at iteration 33, Final SSE: 390846.1006
+ Cosine - Time: 1.1541 sec, Iterations: 48, Stop Reason: Centroids stable at iteration 48, Final SSE: 686.4356
+ Jaccard - Time: 8.9362 sec, Iterations: 59, Stop Reason: Centroids stable at iteration 59, Final SSE: 3660.3895
+
+========================================
+Testing K means with stop_mode='sse_increase' and max_iterations=500
+========================================
+ Euclidean - Time: 30.7016 sec, Iterations: 500, Stop Reason: max_iterations (500) reached, Final SSE: 390846.1006
+ Cosine - Time: 0.6798 sec, Iterations: 28, Stop Reason: SSE increased at iteration 28, Final SSE: 686.1891
+ Jaccard - Time: 0.3046 sec, Iterations: 1, Stop Reason: SSE increased at iteration 1, Final SSE: 4196.2713
+
+========================================
+Testing K means with stop_mode='max_iterations' and max_iterations=500
+========================================
+ Euclidean - Time: 31.1760 sec, Iterations: 500, Stop Reason: max_iterations (500) reached, Final SSE: 390846.1006
+ Cosine - Time: 13.4984 sec, Iterations: 500, Stop Reason: max_iterations (500) reached, Final SSE: 686.4356
+ Jaccard - Time: 82.1102 sec, Iterations: 500, Stop Reason: max_iterations (500) reached, Final SSE: 3660.3895
+
+
+========================================
+Summary of Results
+========================================
+Metric     | SSE (Stop: Stable)   | SSE (Stop: SSE Inc.) | SSE (Stop: Max Iter 100)
+--------------------------------------------------------------------------------
+Euclidean  | 390846.1006          | 390846.1006          | 390846.1006         
+Cosine     | 686.4356             | 686.1891             | 686.4356            
+Jaccard    | 3660.3895            | 4196.2713            | 3660.3895 
