@@ -4,8 +4,8 @@ import pandas as pd
 
 def main():
     # Load dataset
-    data = pd.read_csv('data/data.csv')
-    label = pd.read_csv('data/label.csv')
+    data = pd.read_csv('data/data.csv', header=None)
+    label = pd.read_csv('data/label.csv', header=None)
     
     data_normalized = data.values / 255.0
     
