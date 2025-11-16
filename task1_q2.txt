@@ -1,0 +1,47 @@
+Number of clusters K: 10
+Number of samples: 10000
+
+========================================
+Running K means with euclidean distance
+========================================
+SSE: 389365.90358528437
+Time: 3.3771 seconds
+
+========================================
+Running K means with cosine distance
+========================================
+SSE: 682.2487555738242
+Time: 2.1231 seconds
+
+========================================
+Running K means with jaccard distance
+========================================
+SSE: 3679.9515916376736
+Time: 2.6872 seconds
+
+========================================
+SSE Comparison
+========================================
+Euclidean SSE: 389365.9036
+Cosine SSE: 682.2488
+Jaccard SSE: 3679.9516
+
+Best Metric (by SSE): Cosine (682.2488)
+
+========================================
+Accuracy Comparison
+========================================
+
+Calculating accuracy for Euclidean...
+Cluster Map (Cluster ID -> True Label): {0: np.int64(6), 1: np.int64(1), 2: np.int64(7), 3: np.int64(0), 4: np.int64(1), 5: np.int64(7), 6: np.int64(4), 7: np.int64(2), 8: np.int64(8), 9: np.int64(3)}
+Euclidean Accuracy: 59.20%
+
+Calculating accuracy for Cosine...
+Cluster Map (Cluster ID -> True Label): {0: np.int64(7), 1: np.int64(6), 2: np.int64(9), 3: np.int64(1), 4: np.int64(1), 5: np.int64(8), 6: np.int64(3), 7: np.int64(2), 8: np.int64(4), 9: np.int64(0)}
+Cosine Accuracy: 61.35%
+
+Calculating accuracy for Jaccard...
+Cluster Map (Cluster ID -> True Label): {0: np.int64(6), 1: np.int64(4), 2: np.int64(0), 3: np.int64(7), 4: np.int64(3), 5: np.int64(1), 6: np.int64(8), 7: np.int64(5), 8: np.int64(2), 9: np.int64(1)}
+Jaccard Accuracy: 62.43%
+
+Best Metric (by Accuracy): Jaccard (62.43%)
