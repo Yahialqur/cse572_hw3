@@ -2,3 +2,5 @@
 __MACOSX/
 __pycache__/
 sample_kmeans.py
+.venv/
+.venv_surp/
