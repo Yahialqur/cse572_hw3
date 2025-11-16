@@ -5,6 +5,8 @@ class MyKMeans():
         self.k = k
         self.max_iterations = max_iterations
         self.algorithm = algorithm
+        self.iterations = 0
+        self.reason_for_stop = ""
         
     def fit(self, data):
         '''
@@ -13,17 +15,47 @@ class MyKMeans():
         # Randomly initialize centroids
         self.centroids = data[np.random.choice(data.shape[0], self.k, replace=False)]
         
+        # Set previous state
+        prev_sse = np.inf
+        prev_centroids = None
+        prev_labels = None
+        
+        # Stop if max iterations reached
+        self.stop_reason_ = f"max_iterations ({self.max_iterations}) reached"
+        
         # Create clusters by assigning each data point to nearest centroid
         for i in range(self.max_iterations):
             self.labels_ = self._assign_clusters(data, self.algorithm)
             
+            current_sse = self.compute_sse(data)
+            
+            # Stop if SSE increases
+            if current_sse > prev_sse:
+                self.stop_reason_ = f"SSE increased at iteration {i}"
+                self.n_iter_ = i
+                # Revert to the previous (better) state
+                self.centroids = prev_centroids
+                self.labels_ = prev_labels
+                break
+            
+            # Save the current state before updating
+            prev_sse = current_sse
+            prev_centroids = self.centroids.copy()
+            prev_labels = self.labels_.copy()
+            
             new_centroids = self._update_centroids(data, self.labels_)
             
-            # If centroids do not change, break
+            # Stop if centroids do not change
             if np.all(self.centroids == new_centroids):
+                self.stop_reason_ = f"Centroids stable at iteration {i+1}"
+                self.n_iter_ = i + 1
+                self.centroids = new_centroids
                 break
-            # Update centroids
+            
             self.centroids = new_centroids
+            
+            if i == self.max_iterations - 1:
+                self.n_iter_ = self.max_iterations
             
     def _assign_clusters(self, data, algorithm):
         '''
